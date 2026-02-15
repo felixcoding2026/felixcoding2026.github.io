@@ -442,6 +442,20 @@
             justify-content: center;
             font-size: 3rem;
             border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .project-image-placeholder {
+            font-size: 3rem;
+            z-index: 1;
+        }
+
+        /* Hide placeholder when image is loaded */
+        .project-image[style*="background-image: url('http"]:not([style*="url('')"]) .project-image-placeholder,
+        .project-image[style*="background-image: url('images"]:not([style*="url('')"]) .project-image-placeholder,
+        .project-image[style*="background-image: url('assets"]:not([style*="url('')"]) .project-image-placeholder,
+        .project-image[style*="background-image: url('./"]:not([style*="url('')"]) .project-image-placeholder {
+            display: none;
         }
 
         .project-name {
@@ -996,7 +1010,10 @@
             <h2 class="modal-title">Teaching Portfolio</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <div class="project-image">💻</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">💻</span>
+                    </div>
                     <h3 class="project-name">Programming Fundamentals Course</h3>
                     <p class="project-description">
                         Taught C, C++, and Java programming to 200+ students at Colegio de Montalban. Developed comprehensive curriculum covering data structures, algorithms, and object-oriented programming principles.
@@ -1008,7 +1025,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">🌐</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🌐</span>
+                    </div>
                     <h3 class="project-name">Web Development Track</h3>
                     <p class="project-description">
                         Instructed 150+ students in HTML, CSS, JavaScript, PHP, and XML. Students built responsive websites and dynamic web applications, with 95% course completion rate.
@@ -1020,7 +1040,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">🗄️</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🗄️</span>
+                    </div>
                     <h3 class="project-name">Database Management Systems</h3>
                     <p class="project-description">
                         Delivered DBMS fundamentals and SQL programming to 150+ students. Covered database design, normalization, queries, and practical implementations using MySQL and MongoDB.
@@ -1041,7 +1064,10 @@
             <h2 class="modal-title">Device Repair Expertise</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <div class="project-image">📱</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">📱</span>
+                    </div>
                     <h3 class="project-name">Mobile Device Repairs</h3>
                     <p class="project-description">
                         Specialized in iPhone and Android repairs including screen replacements, battery replacements, charging port repairs, and software troubleshooting. Successfully repaired 600+ mobile devices with 98% success rate.
@@ -1053,7 +1079,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">💻</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">💻</span>
+                    </div>
                     <h3 class="project-name">Laptop & Desktop Repairs</h3>
                     <p class="project-description">
                         Expertise in diagnosing and repairing motherboard issues, RAM upgrades, SSD installations, thermal paste replacement, and OS reinstallations. Serviced 300+ computers at TECHLIX Mobile Repair.
@@ -1065,7 +1094,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">🔧</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🔧</span>
+                    </div>
                     <h3 class="project-name">Peripheral & Accessory Repairs</h3>
                     <p class="project-description">
                         Fixed tablets, smartwatches, gaming peripherals, and computer accessories. Maintained detailed service records and customer satisfaction tracking system improving retention by 40%.
@@ -1086,7 +1118,10 @@
             <h2 class="modal-title">IoT & Arduino Projects</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <div class="project-image">🤖</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🤖</span>
+                    </div>
                     <h3 class="project-name">Farm Bot - Award-Winning Capstone</h3>
                     <p class="project-description">
                         Best Capstone Project (2020). Automated farming system using Arduino with soil moisture sensors, automatic irrigation, and mobile app monitoring. Reduced water usage by 40% in test fields.
@@ -1099,7 +1134,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">🏠</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🏠</span>
+                    </div>
                     <h3 class="project-name">Smart Home Automation Systems</h3>
                     <p class="project-description">
                         Developed 15+ home automation projects for clients including voice-controlled lighting, automated security systems, temperature monitoring, and energy management solutions using ESP8266/ESP32.
@@ -1111,7 +1149,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">📊</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">📊</span>
+                    </div>
                     <h3 class="project-name">Environmental Monitoring Systems</h3>
                     <p class="project-description">
                         Created real-time environmental monitoring stations measuring temperature, humidity, air quality, and noise levels. Data logged to Firebase with web dashboard for visualization and alerts.
@@ -1132,7 +1173,10 @@
             <h2 class="modal-title">COMELEC Election Support</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <div class="project-image">🗳️</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🗳️</span>
+                    </div>
                     <h3 class="project-name">Vote Counting Machine (VCM) Management</h3>
                     <p class="project-description">
                         Monitored and maintained 100+ Vote Counting Machines during the 2022 National and Local Elections. Provided real-time technical support ensuring 99.5% uptime on election day, critical for democratic process.
@@ -1144,7 +1188,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">👥</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">👥</span>
+                    </div>
                     <h3 class="project-name">Electoral Board Training Program</h3>
                     <p class="project-description">
                         Trained 200+ Electoral Board members on VCM operation, troubleshooting procedures, and election day protocols. Developed training materials and conducted hands-on sessions ensuring smooth election operations.
@@ -1156,7 +1203,10 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <div class="project-image">⚡</div>
+                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
+                    <div class="project-image" style="background-image: url(''); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">⚡</span>
+                    </div>
                     <h3 class="project-name">Rapid Response Technical Support</h3>
                     <p class="project-description">
                         Provided emergency technical support during voting hours, resolving printer issues, connectivity problems, and hardware malfunctions. Average response time under 5 minutes, minimizing voter disruption.
