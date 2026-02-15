@@ -1011,7 +1011,7 @@
             <div class="project-grid">
                 <div class="project-item">
                     <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
-                    <div class="project-image" style="background-image: url(images/student.png); background-size: cover; background-position: center;">
+                    <div class="project-image" style="background-image: url('images/student.png'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">💻</span>
                     </div>
                     <h3 class="project-name">Programming Fundamentals Course</h3>
