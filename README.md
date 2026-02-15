@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Background Effect */
         body::before {
             content: '';
             position: fixed;
@@ -52,7 +52,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Grid Overlay */
         body::after {
             content: '';
             position: fixed;
@@ -282,6 +281,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .stat-card::before {
@@ -297,8 +297,23 @@
             transition: transform 0.5s ease;
         }
 
+        .stat-card::after {
+            content: 'Click to view projects';
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 0.7rem;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .stat-card:hover::before {
             transform: scaleX(1);
+        }
+
+        .stat-card:hover::after {
+            opacity: 1;
         }
 
         .stat-card:hover {
@@ -319,6 +334,141 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent);
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 3rem;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--accent);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s ease;
+            line-height: 1;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            padding-right: 3rem;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .project-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            border-color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 136, 255, 0.1));
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 0.75rem;
         }
 
         .skills-grid {
@@ -545,9 +695,12 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
         }
 
-        /* Scroll Progress Bar */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -589,19 +742,19 @@
             </div>
 
             <div class="stats">
-                <div class="stat-card">
+                <div class="stat-card" onclick="openModal('students')">
                     <div class="stat-number">500+</div>
                     <div class="stat-label">Students Taught</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="openModal('devices')">
                     <div class="stat-number">1,000+</div>
                     <div class="stat-label">Devices Repaired</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="openModal('iot')">
                     <div class="stat-number">30+</div>
                     <div class="stat-label">IoT Projects</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" onclick="openModal('vcms')">
                     <div class="stat-number">100+</div>
                     <div class="stat-label">VCMs Supported</div>
                 </div>
@@ -836,6 +989,188 @@
         <p>&copy; 2026 Felix A. Quintana Jr. Built with passion for technology.</p>
     </footer>
 
+    <!-- Modals -->
+    <div id="studentsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('students')">&times;</button>
+            <h2 class="modal-title">Teaching Portfolio</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-image">💻</div>
+                    <h3 class="project-name">Programming Fundamentals Course</h3>
+                    <p class="project-description">
+                        Taught C, C++, and Java programming to 200+ students at Colegio de Montalban. Developed comprehensive curriculum covering data structures, algorithms, and object-oriented programming principles.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C/C++</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">OOP</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">🌐</div>
+                    <h3 class="project-name">Web Development Track</h3>
+                    <p class="project-description">
+                        Instructed 150+ students in HTML, CSS, JavaScript, PHP, and XML. Students built responsive websites and dynamic web applications, with 95% course completion rate.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML/CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">PHP</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">🗄️</div>
+                    <h3 class="project-name">Database Management Systems</h3>
+                    <p class="project-description">
+                        Delivered DBMS fundamentals and SQL programming to 150+ students. Covered database design, normalization, queries, and practical implementations using MySQL and MongoDB.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="devicesModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('devices')">&times;</button>
+            <h2 class="modal-title">Device Repair Expertise</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-image">📱</div>
+                    <h3 class="project-name">Mobile Device Repairs</h3>
+                    <p class="project-description">
+                        Specialized in iPhone and Android repairs including screen replacements, battery replacements, charging port repairs, and software troubleshooting. Successfully repaired 600+ mobile devices with 98% success rate.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">iOS</span>
+                        <span class="tech-tag">Android</span>
+                        <span class="tech-tag">Hardware</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">💻</div>
+                    <h3 class="project-name">Laptop & Desktop Repairs</h3>
+                    <p class="project-description">
+                        Expertise in diagnosing and repairing motherboard issues, RAM upgrades, SSD installations, thermal paste replacement, and OS reinstallations. Serviced 300+ computers at TECHLIX Mobile Repair.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PC Assembly</span>
+                        <span class="tech-tag">Diagnostics</span>
+                        <span class="tech-tag">Upgrades</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">🔧</div>
+                    <h3 class="project-name">Peripheral & Accessory Repairs</h3>
+                    <p class="project-description">
+                        Fixed tablets, smartwatches, gaming peripherals, and computer accessories. Maintained detailed service records and customer satisfaction tracking system improving retention by 40%.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Tablets</span>
+                        <span class="tech-tag">Peripherals</span>
+                        <span class="tech-tag">Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iotModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('iot')">&times;</button>
+            <h2 class="modal-title">IoT & Arduino Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-image">🤖</div>
+                    <h3 class="project-name">Farm Bot - Award-Winning Capstone</h3>
+                    <p class="project-description">
+                        Best Capstone Project (2020). Automated farming system using Arduino with soil moisture sensors, automatic irrigation, and mobile app monitoring. Reduced water usage by 40% in test fields.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Arduino</span>
+                        <span class="tech-tag">Sensors</span>
+                        <span class="tech-tag">Mobile App</span>
+                        <span class="tech-tag">IoT</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">🏠</div>
+                    <h3 class="project-name">Smart Home Automation Systems</h3>
+                    <p class="project-description">
+                        Developed 15+ home automation projects for clients including voice-controlled lighting, automated security systems, temperature monitoring, and energy management solutions using ESP8266/ESP32.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ESP32</span>
+                        <span class="tech-tag">Home Automation</span>
+                        <span class="tech-tag">WiFi</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">📊</div>
+                    <h3 class="project-name">Environmental Monitoring Systems</h3>
+                    <p class="project-description">
+                        Created real-time environmental monitoring stations measuring temperature, humidity, air quality, and noise levels. Data logged to Firebase with web dashboard for visualization and alerts.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Sensors</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Data Logging</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vcmsModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('vcms')">&times;</button>
+            <h2 class="modal-title">COMELEC Election Support</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-image">🗳️</div>
+                    <h3 class="project-name">Vote Counting Machine (VCM) Management</h3>
+                    <p class="project-description">
+                        Monitored and maintained 100+ Vote Counting Machines during the 2022 National and Local Elections. Provided real-time technical support ensuring 99.5% uptime on election day, critical for democratic process.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Hardware Support</span>
+                        <span class="tech-tag">Troubleshooting</span>
+                        <span class="tech-tag">Critical Systems</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">👥</div>
+                    <h3 class="project-name">Electoral Board Training Program</h3>
+                    <p class="project-description">
+                        Trained 200+ Electoral Board members on VCM operation, troubleshooting procedures, and election day protocols. Developed training materials and conducted hands-on sessions ensuring smooth election operations.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Training</span>
+                        <span class="tech-tag">Documentation</span>
+                        <span class="tech-tag">Leadership</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-image">⚡</div>
+                    <h3 class="project-name">Rapid Response Technical Support</h3>
+                    <p class="project-description">
+                        Provided emergency technical support during voting hours, resolving printer issues, connectivity problems, and hardware malfunctions. Average response time under 5 minutes, minimizing voter disruption.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Emergency Response</span>
+                        <span class="tech-tag">Problem Solving</span>
+                        <span class="tech-tag">Government IT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Scroll Progress Bar
         window.addEventListener('scroll', () => {
@@ -858,6 +1193,43 @@
                     });
                 }
             });
+        });
+
+        // Modal functions
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
         });
     </script>
 </body>
