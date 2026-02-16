@@ -771,6 +771,10 @@
                     <div class="stat-number">30+</div>
                     <div class="stat-label">IoT Projects</div>
                 </div>
+                <div class="stat-card" onclick="openModal('crypto')">
+                    <div class="stat-number">₱1M+</div>
+                    <div class="stat-label">Assets Recovered</div>
+                </div>
                 <div class="stat-card" onclick="openModal('vcms')">
                     <div class="stat-number">100+</div>
                     <div class="stat-label">VCMs Supported</div>
@@ -870,7 +874,7 @@
                         <ul>
                             <li>Completed 30+ IoT and Arduino-based automation projects for clients across various industries</li>
                             <li>Perform GIS data annotation and geospatial data processing for mapping projects</li>
-                            <li>Successfully recovered ₱1M+ in cryptocurrency and NFT assets</li>
+                            <li>Successfully recovered ₱1M+ in cryptocurrency and NFT assets, including high-value Axie Infinity accounts during the 2020-2021 gaming boom</li>
                             <li>Provide account recovery services for social media platforms and digital payment systems</li>
                             <li>Deliver custom technical solutions including hardware integration and IT consulting</li>
                         </ul>
@@ -1013,7 +1017,6 @@
             <h2 class="modal-title">Teaching Portfolio</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/student.png'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">💻</span>
                     </div>
@@ -1028,7 +1031,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/student2.png'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">🌐</span>
                     </div>
@@ -1043,7 +1045,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/student3.png'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">🗄️</span>
                     </div>
@@ -1067,7 +1068,6 @@
             <h2 class="modal-title">Device Repair Expertise</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/PHONE.JPG'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">📱</span>
                     </div>
@@ -1082,7 +1082,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/LAPTOP.jpg'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">💻</span>
                     </div>
@@ -1097,7 +1096,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/PERI.JPG'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">🔧</span>
                     </div>
@@ -1121,7 +1119,6 @@
             <h2 class="modal-title">IoT & Arduino Projects</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/IOT1.png'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">🤖</span>
                     </div>
@@ -1137,7 +1134,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/IOT2.png'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">🏠</span>
                     </div>
@@ -1152,7 +1148,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/IOT3.PNG'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">📊</span>
                     </div>
@@ -1170,13 +1165,67 @@
         </div>
     </div>
 
+    <!-- NEW: Digital Asset Recovery Modal -->
+    <div id="cryptoModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('crypto')">&times;</button>
+            <h2 class="modal-title">Digital Asset Recovery</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <!-- 📸 ADD YOUR FIRST IMAGE URL HERE -->
+                    <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/axie1.png'); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🎮</span>
+                    </div>
+                    <h3 class="project-name">Axie Infinity Account Recovery</h3>
+                    <p class="project-description">
+                        Successfully recovered high-value Axie Infinity accounts worth ₱100K+ during the 2020-2021 P2E gaming boom. Specialized in Ronin wallet recovery, account authentication issues, and NFT asset restoration for players who lost access to their gaming investments.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Axie Infinity</span>
+                        <span class="tech-tag">NFT Recovery</span>
+                        <span class="tech-tag">Ronin Wallet</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <!-- 📸 ADD YOUR SECOND IMAGE URL HERE -->
+                    <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/axie2.png'); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">💰</span>
+                    </div>
+                    <h3 class="project-name">Cryptocurrenc Wallet Recovery</h3>
+                    <p class="project-description">
+                        Recovered ₱300K+ in locked cryptocurrency assets through seed phrase restoration, wallet migration, and blockchain forensics. Assisted clients who lost access to Bitcoin, Ethereum, and other digital currencies due to forgotten passwords or corrupted wallet files.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Bitcoin</span>
+                        <span class="tech-tag">Ethereum</span>
+                        <span class="tech-tag">Wallet Recovery</span>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <!-- 📸 ADD YOUR THIRD IMAGE URL HERE -->
+                    <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/GCASH.png'); background-size: cover; background-position: center;">
+                        <span class="project-image-placeholder">🖼️</span>
+                    </div>
+                    <h3 class="project-name">GCASH ACCOUNT RECOVERY</h3>
+                    <p class="project-description">
+                        Successfully recovered ₱300K+ from a locked GCash account through expert verification troubleshooting and authentication procedures. Resolved account access issues that prevented the client from reaching their funds, restoring complete functionality to their digital wallet after exhausting standard recovery methods.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Authentication</span>
+                        <span class="tech-tag">KYC Troubleshooting</span>
+                        <span class="tech-tag">Digital Wallet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="vcmsModal" class="modal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('vcms')">&times;</button>
             <h2 class="modal-title">COMELEC Election Support</h2>
             <div class="project-grid">
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/VCM.jpg'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">🗳️</span>
                     </div>
@@ -1191,7 +1240,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/COMELEC.jpg'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">👥</span>
                     </div>
@@ -1206,7 +1254,6 @@
                     </div>
                 </div>
                 <div class="project-item">
-                    <!-- 📸 ADD YOUR IMAGE URL BELOW - Replace the empty quotes '' with your image URL -->
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/COMELEC3.jpg'); background-size: cover; background-position: center;">
                         <span class="project-image-placeholder">⚡</span>
                     </div>
