@@ -507,7 +507,15 @@
             background-position: center;
         }
 
-        .project-image-placeholder { font-size: 3rem; z-index: 1; }
+        .project-image-placeholder {
+            font-size: 3rem;
+            z-index: 1;
+        }
+
+        /* Hide placeholder when a background image is set */
+        .project-image[style*="url("] .project-image-placeholder {
+            display: none;
+        }
 
         .project-name {
             font-family: 'Syne', sans-serif;
@@ -1300,6 +1308,16 @@
     </div>
 
     <script>
+        // ===== HIDE IMAGE PLACEHOLDERS WHEN BACKGROUND IMAGE IS SET =====
+        document.querySelectorAll('.project-image').forEach(el => {
+            const style = el.getAttribute('style') || '';
+            const urlMatch = style.match(/url\(['"]?([^'"]+)['"]?\)/);
+            if (urlMatch && urlMatch[1] && urlMatch[1].trim() !== '') {
+                const placeholder = el.querySelector('.project-image-placeholder');
+                if (placeholder) placeholder.style.display = 'none';
+            }
+        });
+
         // ===== SCROLL PROGRESS BAR =====
         window.addEventListener('scroll', () => {
             const scrollProgress = document.getElementById('scrollProgress');
