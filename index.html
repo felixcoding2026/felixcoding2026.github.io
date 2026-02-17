@@ -491,25 +491,6 @@
         .btn-secondary::before { background: var(--text-secondary); }
 
         /* ===== PRINT BUTTON ===== */
-        .btn-print {
-            padding: 1rem 1.5rem;
-            border: 1px solid var(--text-secondary);
-            background: transparent;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .btn-print:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1160,39 +1141,52 @@
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 0;
+            top: 65px;
             left: 0;
             width: 100%;
-            height: 100%;
             background: rgba(10, 14, 26, 0.98);
             backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
             z-index: 150;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2.5rem;
+            align-items: stretch;
+            padding: 0.5rem 0;
+            transform: translateY(-10px);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            pointer-events: none;
+        }
+
+        [data-theme="light"] .mobile-menu {
+            background: rgba(240, 244, 255, 0.98);
         }
 
         .mobile-menu.open {
             display: flex;
             opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
         .mobile-menu a {
-            font-family: 'Syne', sans-serif;
-            font-size: 2rem;
-            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
+            padding: 1rem 5%;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
+
+        .mobile-menu a:last-child { border-bottom: none; }
 
         .mobile-menu a:hover, .mobile-menu a.active-link {
             color: var(--accent);
-            text-shadow: 0 0 20px var(--glow);
+            background: rgba(0, 255, 136, 0.05);
+            padding-left: calc(5% + 8px);
         }
 
         /* ===== ACTIVE NAV HIGHLIGHT ===== */
@@ -1362,23 +1356,6 @@
             .testimonial-stats { grid-template-columns: 1fr 1fr; }
         }
 
-        /* ===== PRINT STYLES ===== */
-        @media print {
-            #page-loader, #backToTop, .scroll-progress, .hamburger,
-            .mobile-menu, .theme-toggle, .visitor-counter, .btn-print,
-            .contact-form-wrapper { display: none !important; }
-            body { background: white !important; color: black !important; font-size: 11pt; }
-            h1, h2, h3, h4 { color: black !important; -webkit-text-fill-color: black !important; }
-            .hero { min-height: unset; padding: 0.5rem 0; }
-            section { padding: 1rem 0; page-break-inside: avoid; }
-            .experience-item, .cert-item, .skill-category { border-color: #ccc !important; }
-            .contact-content { grid-template-columns: 1fr; }
-            a { color: black !important; text-decoration: none; }
-            .profile-photo { border: 2px solid #ccc !important; box-shadow: none !important; }
-            .badge-open-work, .badge-exp { border-color: #999 !important; color: #333 !important; }
-            .hero-top { gap: 1.5rem; }
-            header { position: static; border: none; }
-        }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -1479,7 +1456,6 @@
                 <a href="#contact" class="btn">Get In Touch</a>
                 <a href="https://github.com/felixcoding2026" class="btn btn-secondary" target="_blank">View GitHub</a>
                 <a href="cv/QUINTANA, FELIX A_CV_2026.pdf" class="btn btn-secondary" download>Download CV</a>
-                <button class="btn-print" onclick="window.print()">🖨 Print / PDF</button>
             </div>
 
             <div class="stats reveal">
@@ -1653,7 +1629,7 @@
                 <div class="testimonial-video-wrap reveal">
                     <div class="testimonial-video-label">Real Client Review</div>
                     <video controls preload="metadata" poster="">
-                        <source src="videos/fb.mp4" type="video/mp4">
+                        <source src="images/fb.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     <p class="testimonial-video-caption">
@@ -1972,13 +1948,20 @@
         function closeMobileMenu() {
             hamburger.classList.remove('open');
             mobileMenu.classList.remove('open');
-            document.body.style.overflow = 'auto';
         }
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('open');
             mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : 'auto';
+        });
+
+        // Close menu when tapping outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(e.target) &&
+                !hamburger.contains(e.target)) {
+                closeMobileMenu();
+            }
         });
 
         // ===== ACTIVE NAV HIGHLIGHT ON SCROLL =====
