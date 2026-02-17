@@ -601,12 +601,33 @@
             border: 2px solid var(--accent);
             max-width: 900px;
             width: 90%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 3rem;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
             position: relative;
             animation: slideUp 0.4s ease;
             box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+            overflow: hidden;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            z-index: 10;
+        }
+
+        .modal-body {
+            overflow-y: auto;
+            padding: 2rem;
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
         }
 
         @keyframes slideUp {
@@ -615,31 +636,31 @@
         }
 
         .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--accent);
             cursor: pointer;
             background: none;
             border: none;
             transition: transform 0.3s ease;
             line-height: 1;
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .modal-close:hover { transform: rotate(90deg); }
+        .modal-close:active { opacity: 0.7; }
 
         .modal-title {
             font-family: 'Syne', sans-serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--accent);
-            margin-bottom: 2rem;
-            padding-right: 3rem;
+            margin: 0;
         }
 
         .project-grid { display: grid; gap: 2rem; }
@@ -1208,6 +1229,139 @@
             transform: translateY(-3px);
         }
 
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .testimonial-video-wrap {
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .testimonial-video-wrap:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.08);
+        }
+
+        .testimonial-video-label {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .testimonial-video-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .testimonial-video-wrap video {
+            width: 100%;
+            border: 1px solid var(--border);
+            display: block;
+            background: #000;
+        }
+
+        .testimonial-video-caption {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .testimonial-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .testimonial-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .testimonial-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .t-stat {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .t-stat:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .t-stat-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .t-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.2rem;
+        }
+
+        .testimonial-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .t-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .t-badge:hover { border-color: var(--accent); transform: translateX(5px); }
+
+        .t-badge-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .testimonial-stats { grid-template-columns: 1fr 1fr; }
+        }
+
         /* ===== PRINT STYLES ===== */
         @media print {
             #page-loader, #backToTop, .scroll-progress, .hamburger,
@@ -1232,7 +1386,11 @@
             .contact-content { grid-template-columns: 1fr; gap: 2rem; }
             .stats { grid-template-columns: 1fr 1fr; }
             .skills-grid { grid-template-columns: 1fr; }
-            .modal-content { padding: 2rem 1.5rem; }
+            .modal-content { width: 95%; max-height: 92vh; }
+            .modal-header { padding: 1rem 1.2rem; }
+            .modal-body { padding: 1.2rem; }
+            .modal-title { font-size: 1.2rem; }
+            .modal-close { width: 44px; height: 44px; font-size: 1.6rem; }
             .form-row { grid-template-columns: 1fr; }
             .visitor-counter span:last-child { display: none; }
             .contact-intro { font-size: 0.9rem; }
@@ -1261,6 +1419,7 @@
         <a href="#skills" onclick="closeMobileMenu()">Skills</a>
         <a href="#experience" onclick="closeMobileMenu()">Experience</a>
         <a href="#certifications" onclick="closeMobileMenu()">Certifications</a>
+        <a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a>
         <a href="#contact" onclick="closeMobileMenu()">Contact</a>
     </div>
 
@@ -1272,6 +1431,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-right">
@@ -1486,6 +1646,69 @@
             </div>
         </section>
 
+        <section id="testimonials">
+            <h2 class="reveal">Client Testimonials</h2>
+            <div class="testimonials-wrapper">
+                <!-- VIDEO SIDE -->
+                <div class="testimonial-video-wrap reveal">
+                    <div class="testimonial-video-label">Real Client Review</div>
+                    <video controls preload="metadata" poster="">
+                        <source src="videos/fb.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="testimonial-video-caption">
+                        Facebook account recovery review from a satisfied client. 
+                        Successfully restored full account access and secured the account against future lockouts.
+                    </p>
+                </div>
+
+                <!-- INFO SIDE -->
+                <div class="testimonial-info reveal">
+                    <p class="testimonial-intro">
+                        Real results from real clients. I specialize in recovering locked or compromised digital accounts — from social media to cryptocurrency wallets — with a track record of high-value recoveries and satisfied clients.
+                    </p>
+
+                    <div class="testimonial-stats">
+                        <div class="t-stat">
+                            <div class="t-stat-number">₱1M+</div>
+                            <div class="t-stat-label">Assets Recovered</div>
+                        </div>
+                        <div class="t-stat">
+                            <div class="t-stat-number">98%</div>
+                            <div class="t-stat-label">Success Rate</div>
+                        </div>
+                        <div class="t-stat">
+                            <div class="t-stat-number">50+</div>
+                            <div class="t-stat-label">Accounts Restored</div>
+                        </div>
+                        <div class="t-stat">
+                            <div class="t-stat-number">5★</div>
+                            <div class="t-stat-label">Client Rating</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-badges">
+                        <div class="t-badge">
+                            <span class="t-badge-icon">🔐</span>
+                            <span>Facebook & Instagram account recovery</span>
+                        </div>
+                        <div class="t-badge">
+                            <span class="t-badge-icon">💰</span>
+                            <span>GCash & crypto wallet restoration</span>
+                        </div>
+                        <div class="t-badge">
+                            <span class="t-badge-icon">🎮</span>
+                            <span>Axie Infinity & NFT asset recovery</span>
+                        </div>
+                        <div class="t-badge">
+                            <span class="t-badge-icon">⚡</span>
+                            <span>Fast turnaround, confidential service</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact">
             <h2 class="reveal">Let's Connect</h2>
             <p class="contact-intro reveal">I'm always open to discussing new opportunities, collaborations, or interesting projects. Whether you need technical expertise, development services, or IT consulting — let's build something great together.</p>
@@ -1558,11 +1781,13 @@
     <!-- MODALS (unchanged) -->
     <div id="studentsModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('students')">&times;</button>
-            <h2 class="modal-title">Teaching Portfolio</h2>
-            <div class="project-grid">
-                <div class="project-item">
-                    <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/student.png'); background-size: cover; background-position: center;"><span class="project-image-placeholder">💻</span></div>
+            <div class="modal-header">
+                <h2 class="modal-title">Teaching Portfolio</h2>
+                <button class="modal-close" onclick="closeModal('students')" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="project-grid">
+                <div class="project-item">; background-size: cover; background-position: center;"><span class="project-image-placeholder">💻</span></div>
                     <h3 class="project-name">Programming Fundamentals Course</h3>
                     <p class="project-description">Taught C, C++, and Java programming to 200+ students at Colegio de Montalban. Developed comprehensive curriculum covering data structures, algorithms, and object-oriented programming principles.</p>
                     <div class="project-tech"><span class="tech-tag">C/C++</span><span class="tech-tag">Java</span><span class="tech-tag">OOP</span></div>
@@ -1579,14 +1804,18 @@
                     <p class="project-description">Delivered DBMS fundamentals and SQL programming to 150+ students. Covered database design, normalization, queries, and practical implementations using MySQL and MongoDB.</p>
                     <div class="project-tech"><span class="tech-tag">MySQL</span><span class="tech-tag">MongoDB</span><span class="tech-tag">SQL</span></div>
                 </div>
-            </div>
+                </div><!-- end project-grid -->
+            </div><!-- end modal-body -->
         </div>
     </div>
 
     <div id="devicesModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('devices')">&times;</button>
-            <h2 class="modal-title">Device Repair Expertise</h2>
+            <div class="modal-header">
+                <h2 class="modal-title">Device Repair Expertise</h2>
+                <button class="modal-close" onclick="closeModal('devices')" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
             <div class="project-grid">
                 <div class="project-item">
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/PHONE.JPG'); background-size: cover; background-position: center;"><span class="project-image-placeholder">📱</span></div>
@@ -1606,14 +1835,18 @@
                     <p class="project-description">Fixed tablets, smartwatches, gaming peripherals, and computer accessories. Maintained detailed service records and customer satisfaction tracking system improving retention by 40%.</p>
                     <div class="project-tech"><span class="tech-tag">Tablets</span><span class="tech-tag">Peripherals</span><span class="tech-tag">Testing</span></div>
                 </div>
-            </div>
+            </div><!-- end project-grid -->
+            </div><!-- end modal-body -->
         </div>
     </div>
 
     <div id="iotModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('iot')">&times;</button>
-            <h2 class="modal-title">IoT & Arduino Projects</h2>
+            <div class="modal-header">
+                <h2 class="modal-title">IoT & Arduino Projects</h2>
+                <button class="modal-close" onclick="closeModal('iot')" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
             <div class="project-grid">
                 <div class="project-item">
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/IOT1.png'); background-size: cover; background-position: center;"><span class="project-image-placeholder">🤖</span></div>
@@ -1633,14 +1866,18 @@
                     <p class="project-description">An Arduino-based system that automatically controls a street light using a light sensor (LDR) and a motion sensor (PIR). The light stays OFF during the day, turns ON at night when motion is detected, and switches OFF automatically when no movement is present.</p>
                     <div class="project-tech"><span class="tech-tag">Sensors</span><span class="tech-tag">Arduino</span><span class="tech-tag">Solar Charging</span></div>
                 </div>
-            </div>
+            </div><!-- end project-grid -->
+            </div><!-- end modal-body -->
         </div>
     </div>
 
     <div id="cryptoModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('crypto')">&times;</button>
-            <h2 class="modal-title">Digital Asset Recovery</h2>
+            <div class="modal-header">
+                <h2 class="modal-title">Digital Asset Recovery</h2>
+                <button class="modal-close" onclick="closeModal('crypto')" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
             <div class="project-grid">
                 <div class="project-item">
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/axie1.png'); background-size: cover; background-position: center;"><span class="project-image-placeholder">🎮</span></div>
@@ -1660,14 +1897,18 @@
                     <p class="project-description">Successfully recovered ₱300K+ from a locked GCash account through expert verification troubleshooting and authentication procedures. Resolved account access issues that prevented the client from reaching their funds.</p>
                     <div class="project-tech"><span class="tech-tag">Authentication</span><span class="tech-tag">KYC Troubleshooting</span><span class="tech-tag">Digital Wallet</span></div>
                 </div>
-            </div>
+            </div><!-- end project-grid -->
+            </div><!-- end modal-body -->
         </div>
     </div>
 
     <div id="vcmsModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal('vcms')">&times;</button>
-            <h2 class="modal-title">COMELEC Election Support</h2>
+            <div class="modal-header">
+                <h2 class="modal-title">COMELEC Election Support</h2>
+                <button class="modal-close" onclick="closeModal('vcms')" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
             <div class="project-grid">
                 <div class="project-item">
                     <div class="project-image" style="background-image: url('https://felixcoding2026.github.io/images/VCM.jpg'); background-size: cover; background-position: center;"><span class="project-image-placeholder">🗳️</span></div>
@@ -1687,7 +1928,8 @@
                     <p class="project-description">Provided emergency technical support during voting hours, resolving printer issues, connectivity problems, and hardware malfunctions. Average response time under 5 minutes, minimizing voter disruption.</p>
                     <div class="project-tech"><span class="tech-tag">Emergency Response</span><span class="tech-tag">Problem Solving</span><span class="tech-tag">Government IT</span></div>
                 </div>
-            </div>
+            </div><!-- end project-grid -->
+            </div><!-- end modal-body -->
         </div>
     </div>
 
