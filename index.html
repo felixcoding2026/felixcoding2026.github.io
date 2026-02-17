@@ -355,13 +355,27 @@
         }
 
         .stat-card {
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
             transition: all 0.3s ease;
             cursor: pointer;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            overflow: hidden;
         }
 
         .stat-card::before {
@@ -401,8 +415,7 @@
             font-weight: 800;
             color: var(--accent);
             font-family: 'Syne', sans-serif;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: -1px;
+            white-space: nowrap;
         }
 
         .stat-label {
