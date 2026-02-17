@@ -632,20 +632,39 @@
         }
 
         /* ===== CONTACT SECTION ===== */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
+        .contact-intro {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.9;
+            max-width: 750px;
+            margin-bottom: 3rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
         }
 
-        .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+
+        .contact-info-header {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem;
+            padding: 0.85rem 1rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             transition: all 0.3s ease;
@@ -653,18 +672,40 @@
 
         .contact-item:hover {
             border-color: var(--accent);
-            transform: translateX(10px);
+            transform: translateX(8px);
         }
 
-        .contact-icon { width: 24px; height: 24px; fill: var(--accent); flex-shrink: 0; }
+        .contact-icon { width: 20px; height: 20px; fill: var(--accent); flex-shrink: 0; }
 
         .contact-link {
             color: var(--text-primary);
             text-decoration: none;
+            font-size: 0.88rem;
             transition: color 0.3s ease;
         }
 
         .contact-link:hover { color: var(--accent); }
+
+        .availability-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+            padding: 0.7rem 1rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            font-size: 0.82rem;
+        }
+
+        .availability-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
 
         /* ===== CONTACT FORM ===== */
         .contact-form-wrapper {
@@ -847,6 +888,7 @@
             .modal-content { padding: 2rem 1.5rem; }
             .form-row { grid-template-columns: 1fr; }
             .visitor-counter span:last-child { display: none; }
+            .contact-intro { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -1057,8 +1099,11 @@
 
         <section id="contact">
             <h2>Let's Connect</h2>
+            <p class="contact-intro">I'm always open to discussing new opportunities, collaborations, or interesting projects. Whether you need technical expertise, development services, or IT consulting — let's build something great together.</p>
+
             <div class="contact-content">
                 <div class="contact-info">
+                    <div class="contact-info-header">Reach me directly</div>
                     <div class="contact-item">
                         <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         <a href="mailto:felixquintana.work@gmail.com" class="contact-link">felixquintana.work@gmail.com</a>
@@ -1079,12 +1124,14 @@
                         <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                         <span class="contact-link">Rodriguez, Rizal, Philippines</span>
                     </div>
+                    <div class="availability-badge">
+                        <span class="availability-dot"></span>
+                        Available for opportunities
+                    </div>
                 </div>
 
-                <!-- CONTACT FORM -->
                 <div class="contact-form-wrapper">
-                    <p>I'm always open to discussing new opportunities, collaborations, or interesting projects. Whether you need technical expertise, development services, or IT consulting, feel free to reach out. Let's build something great together.</p>
-
+                    <div class="contact-info-header">Send me a message</div>
                     <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
                         <div class="form-row">
                             <div class="form-group">
@@ -1102,7 +1149,7 @@
                         </div>
                         <div class="form-group">
                             <label for="senderMessage">Message</label>
-                            <textarea id="senderMessage" name="message" rows="5" placeholder="Tell me about your project or opportunity..." required></textarea>
+                            <textarea id="senderMessage" name="message" rows="6" placeholder="Tell me about your project or opportunity..." required></textarea>
                         </div>
                         <div class="form-status" id="formStatus"></div>
                         <button type="submit" class="btn-submit" id="submitBtn">▶ SEND MESSAGE</button>
